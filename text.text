@@ -1,0 +1,32 @@
+function RotatingRewards() {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const images = [
+        './static/images/awards/ofstedlogo.jpeg',
+        './static/images/awards/businessAwards.jpg',
+        './static/images/awards/tutoringServiceAward.jpg'
+    ];
+    const width = [
+        200,
+        200,
+        500
+    ]
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+        }, 3000); // Change image every 3 seconds
+
+        return () => clearInterval(interval); // Cleanup the interval on component unmount
+    }, [images.length]);
+
+    return (
+        <Container sx={{maxWidth: 500, maxHeight:200}}>
+            <Stack spacing={2}>
+                <Card sx={{ maxWidth: width[currentIndex] }}>
+                    <CardMedia sx={{ height: 200 }} image={images[currentIndex]} />
+                </Card>
+            </Stack>
+        </Container>
+    )
+}
