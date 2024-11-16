@@ -16,7 +16,7 @@ const router = createBrowserRouter(
         element: <Homepage />,
     },
     {
-        path: "/system/",
+        path: "/methodology/",
         element:<System/>,
     },
     {

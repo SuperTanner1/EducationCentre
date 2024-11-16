@@ -53,7 +53,7 @@ function Navigation() {
                     <Grid container padding={1} columns={12} direction="row" sx={{justifyContent:"center", alignItems:"center", height:1}}>
                         <Grid item xs={4} sm={4} md={4} lg={4} xl={4}>
                             <CenterGrid>
-                                <Button href="/system" variant="contained">System</Button>
+                                <Button href="/methodology" variant="contained">System</Button>
                             </CenterGrid>
                         </Grid>
                         <Grid item xs={4} sm={4} md={4} lg={4} xl={4}>

@@ -15,7 +15,7 @@ function Description() {
         <Box>
             <Grid container sx={{justifyContent:"center", alignItems:"center"}}>
                 <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
-§
+                    
                 </Grid>
                 <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
 
