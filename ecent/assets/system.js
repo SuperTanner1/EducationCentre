@@ -31,33 +31,43 @@ function CenterGrid(props) {
     )
 }
 
-function GridOfTabs(tabs, tabNames)
+function GridOfTabs(props)
 {
+    const [page, setPage] = React.useState(0);
+    const changePage = (change, newPage) => setPage(newPage);
     return (
         <Grid container padding={paddingDefault} sx={{justifyContent:"center", alignItems:"center"}}>
-            <Box sx={{width:'85%', height:"70%"}}>
+            <Box sx={{width:'100%', height:"70%"}}>
                 <Box sx={{width:'100%', height:'10%', backgroundColor:'#00B7F0', justifyContent:"center", alignItems:"center"}}>
                     <Tabs value={page} onChange={changePage}>
-                        {tabNames.map((tabName) =>
+                        {props.tabNames.map((tabName) => (
                             <Tab label={tabName}/>
-                        )}
+                        ))}
                     </Tabs>
                 </Box>
                 
-                {tabs.map((tab, index) =>
-                    <div hidden={page != index}>
-                        {tab}
-                    </div>
-                )}
+
+                <div hidden={page != 0}>
+                    <Typography>Assessment</Typography>
+                </div>
+
+                <div hidden={page != 1}>
+                    <Typography>Work</Typography>
+                </div>
+
+                <div hidden={page != 2}>
+                    <Typography>Progress</Typography>
+                </div>
             </Box>
         </Grid>
     )
 }
 
 
-function PageTemplate(methodology, teachers) {
+function PageTemplate() {
     const [page, setPage] = React.useState(0);
     const changePage = (change, newPage) => setPage(newPage);
+    const tabName = ['Assessment', 'Work', 'Progress'];
     return (
         <Box>
             <Grid container padding={paddingDefault} sx={{justifyContent:"center", alignItems:"center"}}>
@@ -69,18 +79,22 @@ function PageTemplate(methodology, teachers) {
                         </Tabs>
                     </Box>
 
-
+                    
                     <div hidden={page !== 0}>
-                        <Typography>Hello</Typography>
+                        {page === 0 &&
+                            <Stack>
+                                <Description/>
+                                <MethodogicalDescription tabNames={tabName}/>
+                            </Stack>
+                        }
                     </div>
                     <div hidden={page !== 1}>
-                        <Typography>Goodbye</Typography>
+                        {page === 1 && 
+                            <Typography>Teachers</Typography>
+                        }
                     </div>
                 </Box>
             </Grid>
-            <ThemeProvider theme={theme}>
-                <Typography variant="h1">Overview</Typography>
-            </ThemeProvider>
         </Box>
     )
 }
@@ -106,9 +120,9 @@ function Description() {
     )
 }
 
-function methodogicalDescription() {
+function MethodogicalDescription(props) {
     return (
-        <GridOfTabs/>
+        <GridOfTabs tabNames={props.tabNames}/>
     )
 }
 
@@ -116,7 +130,6 @@ export default function System() {
     return (
         <Stack>
             <PageTemplate/>
-            <Description/>
             <ContactUs/>
         </Stack>
     )
