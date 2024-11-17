@@ -74,35 +74,87 @@ function CenterGrid(props) {
 }
 
 function Assessment() {
+    const sizeOfItems = 6
     return (
         <Grid container padding={paddingDefault} sx={{justifyContent:"center", alignItems:"center"}}>
-            <Typography>
-                Depending on the age of your child, we provide an assessment using past 11+ or GCSE questions to assess their current skills
-                to create a suitable learning plan to fill their gaps in their knowledge to achieve their learning goals.
-            </Typography>
+            <Stack>
+                <Typography>
+                    Depending on the age of your child, we provide an assessment using past 11+ or GCSE questions to assess their current skills
+                    to create a suitable learning plan to fill their gaps in their knowledge to achieve their learning goals.
+                </Typography>
+                <Grid container padding={paddingDefault} sx={{justifyContent:"center", alignItems:"center"}}>
+                    <Grid item xs={sizeOfItems} sm={sizeOfItems} md={sizeOfItems} lg={sizeOfItems} xl={sizeOfItems}>
+                        <Box
+                            component="img"
+                            sx={{
+                                height: 1,
+                                width: 1,
+                                maxHeight: { xs: 675, md: 675 },
+                                maxWidth: { xs: 600, md: 600 },
+                            }}
+                            src="./static/images/tutoring.jpg"
+                        />
+                    </Grid>
+                </Grid>
+            </Stack>
         </Grid>
     )
 }
 
 function Work() {
+    const sizeOfItems = 6
     return (
         <Grid container padding={paddingDefault} sx={{justifyContent:"center", alignItems:"center"}}>
-            <Typography>
-                We then provide work during class time and homework according to the learning plan every lesson while providing support by expert teachers
-                with a cumulative of 23 years of experience.
-            </Typography>
+            <Stack>
+                <Typography>
+                    We then provide work during class time and homework according to the learning plan every lesson while providing support by expert teachers
+                    with a cumulative of 23 years of experience.
+                </Typography>
+                <Grid container padding={paddingDefault} sx={{justifyContent:"center", alignItems:"center"}}>
+                    <Grid item xs={sizeOfItems} sm={sizeOfItems} md={sizeOfItems} lg={sizeOfItems} xl={sizeOfItems}>
+                        <Box
+                            component="img"
+                            sx={{
+                                height: 1,
+                                width: 1,
+                                maxHeight: { xs: 675, md: 675 },
+                                maxWidth: { xs: 600, md: 600 },
+                            }}
+                            src="./static/images/tutoring.jpg"
+                        />
+                    </Grid>
+                </Grid>
+            </Stack>
         </Grid>
     )
 
 }
 
 function Progress() {
+    const sizeOfItems = 6
+
     return (
         <Grid container padding={paddingDefault} sx={{justifyContent:"center", alignItems:"center"}}>
-            <Typography>
-                Their progress is tracked by regularly checking how far through the learning plan they are, and by regular assessing progress through
-                past papers.
-            </Typography>
+                <Stack>
+                    <Typography>
+                        Their progress is tracked by regularly checking how far through the learning plan they are, and by regular assessing progress through
+                        past papers.
+                    </Typography>
+                    <Grid container padding={paddingDefault} sx={{justifyContent:"center", alignItems:"center"}}>
+                        <Grid item xs={sizeOfItems} sm={sizeOfItems} md={sizeOfItems} lg={sizeOfItems} xl={sizeOfItems}>
+                            <Box
+                                component="img"
+                                sx={{
+                                    height: 1,
+                                    width: 1,
+                                    maxHeight: { xs: 675, md: 675 },
+                                    maxWidth: { xs: 600, md: 600 },
+                                }}
+                                src="./static/images/tutoring.jpg"
+                            />
+                        </Grid>
+                    </Grid>
+                </Stack>
         </Grid>
     )
 }
@@ -164,35 +216,17 @@ function Description() {
 }
 
 function PageTemplate() {
-    const [page, setPage] = React.useState(0);
-    const changePage = (change, newPage) => setPage(newPage);
     const tabName = ['Assessment', 'Work', 'Progress'];
     return (
         <Container maxWidth='xl'>
             <Box backgroundColor={backgroundColor}>
                 <Grid container padding={paddingDefault} sx={{justifyContent:"center", alignItems:"center"}}>
                     <Box sx={{width:'85%', height:"70%"}}>
-                        <Box sx={{width:'100%', height:'10%', backgroundColor:transparentTabColours, justifyContent:"center", alignItems:"center"}}>
-                            <Tabs value={page} onChange={changePage}>
-                                <Tab label="Methodology"/>
-                                <Tab label="Teachers"/>
-                            </Tabs>
-                        </Box>
-
-                        
-                        <div hidden={page !== 0}>
-                            {page === 0 &&
-                                <Stack>
-                                    <Description/>
-                                    <MethodogicalDescription tabNames={tabName} test={<Test/>}/>
-                                </Stack>
-                            }
-                        </div>
-                        <div hidden={page !== 1}>
-                            {page === 1 && 
-                                <Typography>Teachers</Typography>
-                            }
-                        </div>
+                        <Typography variant='h1'>Methodology</Typography>
+                        <Stack>
+                            <Description/>
+                            <MethodogicalDescription tabNames={tabName} test={<Test/>}/>
+                        </Stack>
                     </Box>
                 </Grid>
             </Box>
