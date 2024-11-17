@@ -23,6 +23,35 @@ const theme = createTheme({
 
 const paddingDefault = 2;
 
+function Navigation() {
+    return (
+        <Container maxWidth="xl">
+            <CssBaseline/>
+            <Box sx={{background:('#FFFFFF', '#E6EFFE'), height:140, justifyContent:"center", alignItems:"center"}}>
+                <AppBar>
+                    <Grid container padding={1} columns={12} direction="row" sx={{justifyContent:"center", alignItems:"center", height:1}}>
+                        <Grid item xs={4} sm={4} md={4} lg={4} xl={4}>
+                            <CenterGrid>
+                                <Button href="/" variant="contained">Homepage</Button>
+                            </CenterGrid>
+                        </Grid>
+                        <Grid item xs={4} sm={4} md={4} lg={4} xl={4}>
+                            <CenterGrid>
+                                <Button href="/primary" variant="contained">Primary</Button>
+                            </CenterGrid>
+                        </Grid>
+                        <Grid item xs={4} sm={4} md={4} lg={4} xl={4}>
+                            <CenterGrid>
+                                <Button href="/onetoone" variant="contained">1-to-1</Button>
+                            </CenterGrid>
+                        </Grid>
+                    </Grid>
+                </AppBar>
+            </Box>
+        </Container>
+    )
+};
+
 function CenterGrid(props) {
     return (
         <Grid container sx={{justifyContent:"center", alignItems:"center",}}>
@@ -40,8 +69,8 @@ function GridOfTabs(props)
             <Box sx={{width:'100%', height:"70%"}}>
                 <Box sx={{width:'100%', height:'10%', backgroundColor:'#00B7F0', justifyContent:"center", alignItems:"center"}}>
                     <Tabs value={page} onChange={changePage}>
-                        {props.tabNames.map((tabName) => (
-                            <Tab label={tabName}/>
+                        {props.tabNames.map((tabName, index) => (
+                            <Tab key={index} label={tabName}/>
                         ))}
                     </Tabs>
                 </Box>
@@ -129,6 +158,7 @@ function MethodogicalDescription(props) {
 export default function System() {
     return (
         <Stack>
+            <Navigation/>
             <PageTemplate/>
             <ContactUs/>
         </Stack>
