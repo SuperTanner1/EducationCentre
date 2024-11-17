@@ -73,6 +73,40 @@ function CenterGrid(props) {
     )
 }
 
+function Assessment() {
+    return (
+        <Grid container padding={paddingDefault} sx={{justifyContent:"center", alignItems:"center"}}>
+            <Typography>
+                Depending on the age of your child, we provide an assessment using past 11+ or GCSE questions to assess their current skills
+                to create a suitable learning plan to fill their gaps in their knowledge to achieve their learning goals.
+            </Typography>
+        </Grid>
+    )
+}
+
+function Work() {
+    return (
+        <Grid container padding={paddingDefault} sx={{justifyContent:"center", alignItems:"center"}}>
+            <Typography>
+                We then provide work during class time and homework according to the learning plan every lesson while providing support by expert teachers
+                with a cumulative of 23 years of experience.
+            </Typography>
+        </Grid>
+    )
+
+}
+
+function Progress() {
+    return (
+        <Grid container padding={paddingDefault} sx={{justifyContent:"center", alignItems:"center"}}>
+            <Typography>
+                Their progress is tracked by regularly checking how far through the learning plan they are, and by regular assessing progress through
+                past papers.
+            </Typography>
+        </Grid>
+    )
+}
+
 function GridOfTabs(props)
 {
     const [page, setPage] = React.useState(0);
@@ -90,15 +124,15 @@ function GridOfTabs(props)
                 
 
                 <div hidden={page != 0}>
-                    <Typography>Assessment</Typography>
+                    <Assessment/>
                 </div>
 
                 <div hidden={page != 1}>
-                    <Typography>Work</Typography>
+                    <Work/>
                 </div>
 
                 <div hidden={page != 2}>
-                    
+                    <Progress/>
                 </div>
             </Box>
         </Grid>
