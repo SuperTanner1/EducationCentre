@@ -40,7 +40,7 @@ function Navigation() {
     return (
         <Container maxWidth="xl">
             <CssBaseline/>
-            <Box sx={{background:backgroundColor, height:140, justifyContent:"center", alignItems:"center"}}>
+            <Box sx={{background:backgroundColor, height:60, justifyContent:"center", alignItems:"center"}}>
                 <AppBar>
                     <Grid container padding={1} columns={12} direction="row" sx={{justifyContent:"center", alignItems:"center", height:1}}>
                         <Grid item xs={4} sm={4} md={4} lg={4} xl={4}>
