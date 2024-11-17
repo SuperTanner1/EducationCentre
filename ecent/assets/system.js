@@ -215,18 +215,59 @@ function Description() {
     )
 }
 
+function Teachers() {
+    const sizeOfItems = 6;
+
+    return (
+        <Container maxWidth='xl'>
+        <Box>
+            <Grid container sx={{justifyContent:"center", alignItems:"center"}}>
+                <Grid item xs={sizeOfItems} sm={sizeOfItems} md={sizeOfItems} lg={sizeOfItems} xl={sizeOfItems}>
+                    <Typography>
+                        Each teacher is DBS certified and has many years of experience teaching either GCSE and A-Level Maths
+                        or 11+ and Primary students.
+                    </Typography>
+                </Grid>
+                <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
+
+                </Grid>
+            </Grid>
+            
+        </Box>
+    </Container>
+    )
+}
+
 function PageTemplate() {
+    const [page, setPage] = React.useState(0);
+    const changePage = (change, newPage) => setPage(newPage);
     const tabName = ['Assessment', 'Work', 'Progress'];
     return (
         <Container maxWidth='xl'>
             <Box backgroundColor={backgroundColor}>
                 <Grid container padding={paddingDefault} sx={{justifyContent:"center", alignItems:"center"}}>
                     <Box sx={{width:'85%', height:"70%"}}>
-                        <Typography variant='h1'>Methodology</Typography>
-                        <Stack>
-                            <Description/>
-                            <MethodogicalDescription tabNames={tabName} test={<Test/>}/>
-                        </Stack>
+                        <Box sx={{width:'100%', height:'10%', backgroundColor:transparentTabColours, justifyContent:"center", alignItems:"center"}}>
+                            <Tabs value={page} onChange={changePage}>
+                                <Tab label="Methodology"/>
+                                <Tab label="Teachers"/>
+                            </Tabs>
+                        </Box>
+
+                        
+                        <div hidden={page !== 0}>
+                            {page === 0 &&
+                                <Stack>
+                                    <Description/>
+                                    <MethodogicalDescription tabNames={tabName} test={<Test/>}/>
+                                </Stack>
+                            }
+                        </div>
+                        <div hidden={page !== 1}>
+                            {page === 1 && 
+                                <Teachers/>
+                            }
+                        </div>
                     </Box>
                 </Grid>
             </Box>
