@@ -1,6 +1,8 @@
 import React from 'react';
 import { Container, CssBaseline, Typography} from '@mui/material';
-import ContactUs from './shared.js';
+import {ContactUs} from './shared.js';
+import {Navigation} from './shared.js';
+
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
@@ -21,57 +23,24 @@ const theme = createTheme({
         h2: {
             fontSize: 35, 
         }
+    },
+    palette: {
+        primary: {
+            main:'#187BE7'
+        },
+        secondary: {
+            main:'#4695EC'
+        }
     }
 });
 
 const paddingDefault = 2;
-
-function Test() {
-    return (
-        <Typography>Can you insert me?</Typography>
-    )
-}
-
 const backgroundColor = ('#FFFFFF', '#E6EFFE')
+const complementaryBackgroundColor = ('#FFFFFF', '#B5D0FC')
 const transparentTabColours = ('#FFFFFF', '#E6EFFE')
 const opaqueTabColors = ('#00B7F0')
 
-function Navigation() {
-    return (
-        <Container maxWidth="xl">
-            <CssBaseline/>
-            <Box sx={{background:backgroundColor, height:60, justifyContent:"center", alignItems:"center"}}>
-                <AppBar>
-                    <Grid container padding={1} columns={12} direction="row" sx={{justifyContent:"center", alignItems:"center", height:1}}>
-                        <Grid item xs={4} sm={4} md={4} lg={4} xl={4}>
-                            <CenterGrid>
-                                <Button href="/" variant="contained">Homepage</Button>
-                            </CenterGrid>
-                        </Grid>
-                        <Grid item xs={4} sm={4} md={4} lg={4} xl={4}>
-                            <CenterGrid>
-                                <Button href="/primary" variant="contained">Primary</Button>
-                            </CenterGrid>
-                        </Grid>
-                        <Grid item xs={4} sm={4} md={4} lg={4} xl={4}>
-                            <CenterGrid>
-                                <Button href="/onetoone" variant="contained">1-to-1</Button>
-                            </CenterGrid>
-                        </Grid>
-                    </Grid>
-                </AppBar>
-            </Box>
-        </Container>
-    )
-};
 
-function CenterGrid(props) {
-    return (
-        <Grid container sx={{justifyContent:"center", alignItems:"center",}}>
-            {props.children}
-        </Grid>
-    )
-}
 
 function Assessment() {
     const sizeOfItems = 6
@@ -259,7 +228,7 @@ function PageTemplate() {
                             {page === 0 &&
                                 <Stack>
                                     <Description/>
-                                    <MethodogicalDescription tabNames={tabName} test={<Test/>}/>
+                                    <MethodogicalDescription tabNames={tabName}/>
                                 </Stack>
                             }
                         </div>
@@ -284,7 +253,7 @@ function MethodogicalDescription(props) {
 export default function System() {
     return (
         <Stack>
-            <Navigation/>
+            <Navigation url="" pageName="Homepage"/>
             <PageTemplate/>
             <ContactUs/>
         </Stack>

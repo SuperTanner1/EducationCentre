@@ -16,8 +16,8 @@ import Grid from '@mui/material/Grid';
 import Divider from '@mui/material/Divider';
 import { styled, ThemeProvider, createTheme } from '@mui/material/styles';
 import { Class } from '@mui/icons-material';
-
-import ContactUs from "./shared.js";
+import {ContactUs} from "./shared.js";
+import {Navigation} from "./shared.js";
 
 const theme = createTheme({
     typography: {
@@ -26,6 +26,14 @@ const theme = createTheme({
         },
         h2: {
             fontSize: 35, 
+        }
+    },
+    palette: {
+        primary: {
+            main:('#FFFFFF', '#24A0F1')
+        },
+        secondary: {
+            main:('#FFFFFF', '#0C74B8')
         }
     }
 });
@@ -44,69 +52,40 @@ function CenterGrid(props) {
     )
 }
 
-function Navigation() {
-    return (
-        <Container maxWidth="xl">
-            <CssBaseline/>
-            <Box sx={{background:('#FFFFFF', '#E6EFFE'), height:140, justifyContent:"center", alignItems:"center"}}>
-                <AppBar>
-                    <Grid container padding={1} columns={12} direction="row" sx={{justifyContent:"center", alignItems:"center", height:1}}>
-                        <Grid item xs={4} sm={4} md={4} lg={4} xl={4}>
-                            <CenterGrid>
-                                <Button href="/methodology" variant="contained">System</Button>
-                            </CenterGrid>
-                        </Grid>
-                        <Grid item xs={4} sm={4} md={4} lg={4} xl={4}>
-                            <CenterGrid>
-                                <Button href="/primary" variant="contained">Primary</Button>
-                            </CenterGrid>
-                        </Grid>
-                        <Grid item xs={4} sm={4} md={4} lg={4} xl={4}>
-                            <CenterGrid>
-                                <Button href="/onetoone" variant="contained">1-to-1</Button>
-                            </CenterGrid>
-                        </Grid>
-                    </Grid>
-                </AppBar>
-            </Box>
-        </Container>
-    )
-};
-
-//
-
 
 function Introduction() {
     const imageSize = 110
     return (
-        <Container maxWidth="xl">
-            <Box sx={{background:('#FFFFFF', '#E6EFFE'), height:700}}>
-                <Grid container columns={12} sx={{justifyContent:"flex-start", alignItems:"flex-start", height:2/3, maxWidth:"xl"}}>
-                    <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+            <Container maxWidth="xl">
+                <CssBaseline/>
+                <ThemeProvider theme={theme}>
+                    <Box sx={{backgroundColor:`${'primary'}.main`, opacity:0.8, height:700}}>
+                        <Grid container columns={12} sx={{justifyContent:"flex-start", alignItems:"flex-start", height:2/3, maxWidth:"xl"}}>
+                            <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
 
-                        <Stack spacing={"2.5%"} sx={{justifyContent:"center", alignItems:"center"}}>
-                            <Stack sx={{justifyContent:"flex-start", alignItems:"center"}}>
-                                <Stack direction="row" sx={{justifyContent:"center", alignItems:"center"}}>
-                                    <img src="./static/images/ecentLogo.png" height={imageSize} width={imageSize}/>
-                                    <img src="./static/images/awards/ofstedlogo.jpeg" height={imageSize} width={imageSize}/>
-                                    <img src="./static/images/awards/businessAwards.jpg" height={imageSize} width={imageSize * 1.25}/>
+                                <Stack spacing={"2.5%"} sx={{justifyContent:"center", alignItems:"center"}}>
+                                    <Stack sx={{justifyContent:"flex-start", alignItems:"center"}}>
+                                        <Stack direction="row" sx={{justifyContent:"center", alignItems:"center"}}>
+                                            <img src="./static/images/ecentLogo.png" height={imageSize} width={imageSize}/>
+                                            <img src="./static/images/awards/ofstedlogo.jpeg" height={imageSize} width={imageSize}/>
+                                            <img src="./static/images/awards/businessAwards.jpg" height={imageSize} width={imageSize * 1.25}/>
+                                        </Stack>
+                                        <img src="./static/images/awards/tutoringServiceAward.jpg" height={imageSize * 1.3} width={imageSize*3.25}/>
+                                    </Stack>
+                                    
+                                        <Typography variant="h1">Bespoke teaching for your child</Typography>
+                                        <Typography variant="h2" color='white'>A proven track record of results</Typography>
+                                    
                                 </Stack>
-                                <img src="./static/images/awards/tutoringServiceAward.jpg" height={imageSize * 1.3} width={imageSize*3.25}/>
-                            </Stack>
-                            
-                            <ThemeProvider theme={theme}>
-                                <Typography variant="h1">Bespoke teaching for your child</Typography>
-                                <Typography variant="h2">A proven track record of results</Typography>
-                            </ThemeProvider>
-                        </Stack>
 
-                        <Stack sx={{justifyContent:"center", alignItems:"center", paddingTop:"7.5%"}}>
-                            <JoinButton variant="contained">Join Now</JoinButton>
-                        </Stack>
-                    </Grid>
-                </Grid>
-            </Box>
-        </Container>
+                                <Stack sx={{justifyContent:"center", alignItems:"center", paddingTop:"7.5%"}}>
+                                    <JoinButton color='secondary' variant="contained">Join Now</JoinButton>
+                                </Stack>
+                            </Grid>
+                        </Grid>
+                    </Box>
+                </ThemeProvider>
+            </Container>
     )
 };
 
@@ -114,46 +93,48 @@ function Introduction() {
 
 function KeyFacts() {
     return (
-        <Container maxWidth="xl">
-            <Box sx={{background:('#FFFFFF', '#E6EFFE'), height:800}}>
-                <Grid container sx={{justifyContent:"center", alignItems:"flex-start", height:1, maxWidth:"xl"}}>
-                    <Grid item xs={7} sm={7} md={7} lg={7} xl={7} sx={{spacing:5}}>
-                        <Stack spacing={5} sx={{justifyContent:"center", alignItems:"center", paddingTop:"5%", height:1}}>
-                            {[
-                                "We teach students from Year 1 to Year 13*", 
-                                "We offer GCSE Maths, English and 11+ Tuition", 
-                                "We offer one-to-one and group tuition classes"
-                            ].map((elevation) => (
-                                    <Card key={elevation} elevation={4} sx={{width:"90%", height:1/5 * 800, padding:5, justifyContent:"center", alignItems:"center"}}>
-                                        <Grid container sx={{width:1, height:1, justifyContent:"center", alignItems:"center",}}>
-                                            <Grid item xs={12} sm={12} md={12} lg={12} xl={12} sx={{justifyContent:"center", alignItems:"center",}}>
-                                                <Typography variant="subtitle1">{elevation}</Typography>
+        <ThemeProvider theme={theme}>
+            <Container maxWidth="xl">
+                <Box sx={{backgroundColor:`${'primary'}.main`, height:800}}>
+                    <Grid container sx={{justifyContent:"center", alignItems:"flex-start", height:1, maxWidth:"xl"}}>
+                        <Grid item xs={7} sm={7} md={7} lg={7} xl={7} sx={{spacing:5}}>
+                            <Stack spacing={5} sx={{justifyContent:"center", alignItems:"center", paddingTop:"5%", height:1}}>
+                                {[
+                                    "We teach students from Year 1 to Year 13*", 
+                                    "We offer GCSE Maths, English and 11+ Tuition", 
+                                    "We offer one-to-one and group tuition classes"
+                                ].map((elevation) => (
+                                        <Card key={elevation} elevation={4} sx={{width:"90%", height:1/5 * 800, padding:5, justifyContent:"center", alignItems:"center"}}>
+                                            <Grid container sx={{width:1, height:1, justifyContent:"center", alignItems:"center",}}>
+                                                <Grid item xs={12} sm={12} md={12} lg={12} xl={12} sx={{justifyContent:"center", alignItems:"center",}}>
+                                                    <Typography variant="subtitle1">{elevation}</Typography>
+                                                </Grid>
                                             </Grid>
-                                        </Grid>
-                                    </Card>
-                                ))}
-                        </Stack>
+                                        </Card>
+                                    ))}
+                            </Stack>
 
+                        </Grid>
+                        <Grid item xs={5} sm={5} md={5} lg={5} xl={5} padding={paddingDefault}>
+                                <Box
+                                    component="img"
+                                    sx={{
+                                        height: 1,
+                                        width: 1,
+                                        maxHeight: { xs: 675, md: 675 },
+                                        maxWidth: { xs: 600, md: 600 },
+                                    }}
+                                    src="./static/images/tutoring.jpg"
+                                />
+                        </Grid>
+                        <Grid item xs={12} sm={12} md={12} lg={12} xl={12} padding={paddingDefault}>
+                            <Typography variant="caption">*We only offer A-Level Maths through one-to-one classes</Typography>
+                        </Grid>
                     </Grid>
-                    <Grid item xs={5} sm={5} md={5} lg={5} xl={5} padding={paddingDefault}>
-                            <Box
-                                component="img"
-                                sx={{
-                                    height: 1,
-                                    width: 1,
-                                    maxHeight: { xs: 675, md: 675 },
-                                    maxWidth: { xs: 600, md: 600 },
-                                }}
-                                src="./static/images/tutoring.jpg"
-                            />
-                    </Grid>
-                    <Grid item xs={12} sm={12} md={12} lg={12} xl={12} padding={paddingDefault}>
-                        <Typography variant="caption">*We only offer A-Level Maths through one-to-one classes</Typography>
-                    </Grid>
-                </Grid>
-            </Box>
+                </Box>
 
-        </Container>
+            </Container>
+        </ThemeProvider>
     )
 }
 
@@ -295,25 +276,27 @@ function ClassOptions() {
     ];
 
     return (
-        <Container maxWidth="xl" sx={{justifyContent:"center", alignItems:"center",}}>
-            <Box sx={{background:('#FFFFFF', '#E6EFFE'), height:850}}>
+        <ThemeProvider theme={theme}>
+            <Container maxWidth="xl" sx={{justifyContent:"center", alignItems:"center",}}>
+                <Box sx={{backgroundColor:`${'primary'}.main`, height:850}}>
 
-                <Box padding={5}>
-                    <Grid container sx={{justifyContent:"center", alignItems:"center",}}>
-                        <Tabs value={classType} onChange={changeClass}>
-                            <Tab label="Secondary"/>
-                            <Tab label="Primary"/>
-                            <Tab label="1-to-1"/>
-                        </Tabs>
-                    </Grid>
+                    <Box padding={5}>
+                        <Grid container sx={{justifyContent:"center", alignItems:"center",}}>
+                            <Tabs value={classType} onChange={changeClass}>
+                                <Tab label="Secondary"/>
+                                <Tab label="Primary"/>
+                                <Tab label="1-to-1"/>
+                            </Tabs>
+                        </Grid>
+                    </Box>
+
+                    <ClassCard value={classType} index={0} classList={secondaryClasses}/>
+                    <ClassCard value={classType} index={1} classList={primaryClasses}/>
+                    <ClassCard value={classType} index={2} classList={oneToOneClasses}/>
                 </Box>
 
-                <ClassCard value={classType} index={0} classList={secondaryClasses}/>
-                <ClassCard value={classType} index={1} classList={primaryClasses}/>
-                <ClassCard value={classType} index={2} classList={oneToOneClasses}/>
-            </Box>
-
-        </Container>
+            </Container>
+        </ThemeProvider>
 
     )
 };
@@ -381,39 +364,40 @@ function Testimonials() {
     ];
 
     return (
-        
-        <Container maxWidth="xl" height={850}>
-            <Box sx={{width:'100%', height:'85%', background:('#FFFFFF', '#E6EFFE')}}>
-                <Grid container padding={paddingDefault} sx={{justifyContent:"center", alignItems:"flex-start"}}>
-                    <Typography variant="h2">Testimonials</Typography>
-                </Grid>
-                <Grid container padding={paddingDefault} sx={{justifyContent:"center", alignItems:"center"}}>
-                    <Box sx={{width:'85%', height:"70%"}}>
-                        <Box sx={{width:'100%', height:'10%', backgroundColor:'#00B7F0', justifyContent:"center", alignItems:"center"}}>
-                            <Tabs value={page} onChange={changePage}>
-                                <Tab label="Page 1"/>
-                                <Tab label="Page 2"/>
-                                <Tab label="Page 3"/>
-                            </Tabs>
-                        </Box>
+        <ThemeProvider theme={theme}>
+            <Container maxWidth="xl" height={850}>
+                <Box sx={{width:'100%', height:'85%', backgroundColor:`${'primary'}.main`}}>
+                    <Grid container padding={paddingDefault} sx={{justifyContent:"center", alignItems:"flex-start"}}>
+                        <Typography variant="h2">Testimonials</Typography>
+                    </Grid>
+                    <Grid container padding={paddingDefault} sx={{justifyContent:"center", alignItems:"center"}}>
+                        <Box sx={{width:'85%', height:"70%"}}>
+                            <Box sx={{width:'100%', height:'10%', backgroundColor:`${'secondary'}.main`, justifyContent:"center", alignItems:"center"}}>
+                                <Tabs value={page} onChange={changePage}>
+                                    <Tab label="Page 1"/>
+                                    <Tab label="Page 2"/>
+                                    <Tab label="Page 3"/>
+                                </Tabs>
+                            </Box>
 
-                        <TestimonialsGrid value={page} index={0} testimonials={testimonialsOne}/>
-                        <TestimonialsGrid value={page} index={1} testimonials={testimonialsTwo}/>
-                        <TestimonialsGrid value={page} index={2} testimonials={testimonialsThree}/>
-                    </Box>
-                </Grid>
-                <Grid container padding={3} sx={{justifyContent:"center", alignItems:"center"}}>
-                    <Button href="https://www.google.com/maps/place/The+Education+Centre/@51.6292263,-0.7445597,17z/data=!3m1!5s0x487661cf4c290cdf:0x2ca4bb5521d273f2!4m8!3m7!1s0x487661cf4ef0c013:0x3678a48b5da8d072!8m2!3d51.6292263!4d-0.7419794!9m1!1b1!16s%2Fg%2F11f1pmrtgk?entry=ttu&g_ep=EgoyMDI0MDkwMy4wIKXMDSoASAFQAw%3D%3D" width={2/3}>See More Reviews</Button>
-                </Grid>
-            </Box>
-        </Container>
+                            <TestimonialsGrid value={page} index={0} testimonials={testimonialsOne}/>
+                            <TestimonialsGrid value={page} index={1} testimonials={testimonialsTwo}/>
+                            <TestimonialsGrid value={page} index={2} testimonials={testimonialsThree}/>
+                        </Box>
+                    </Grid>
+                    <Grid container padding={3} sx={{justifyContent:"center", alignItems:"center"}}>
+                        <Button href="https://www.google.com/maps/place/The+Education+Centre/@51.6292263,-0.7445597,17z/data=!3m1!5s0x487661cf4c290cdf:0x2ca4bb5521d273f2!4m8!3m7!1s0x487661cf4ef0c013:0x3678a48b5da8d072!8m2!3d51.6292263!4d-0.7419794!9m1!1b1!16s%2Fg%2F11f1pmrtgk?entry=ttu&g_ep=EgoyMDI0MDkwMy4wIKXMDSoASAFQAw%3D%3D" width={2/3}>See More Reviews</Button>
+                    </Grid>
+                </Box>
+            </Container>
+        </ThemeProvider>
     )
 };
 
 export default function Homepage() {
     return (
         <Stack>
-            <Navigation/>
+            <Navigation url='methodology' pageName='Methodology'/>
             <Introduction/>
             <KeyFacts/>
             <ClassOptions/>
