@@ -14,7 +14,7 @@ import { styled, ThemeProvider, createTheme } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 
-
+/*
 const theme = createTheme({
     typography: {
         h1: {
@@ -33,14 +33,28 @@ const theme = createTheme({
         }
     }
 });
+*/
+
+const theme = createTheme({
+    typography: {
+        h1: {
+            fontSize: 48,
+        },
+        h2: {
+            fontSize: 35, 
+        }
+    },
+    palette: {
+        primary: {
+            main:('#FFFFFF', '#E6EFFE')
+        },
+        secondary: {
+            main:('#FFFFFF', '#B5D0FC')
+        }
+    }
+});
 
 const paddingDefault = 2;
-const backgroundColor = ('#FFFFFF', '#E6EFFE')
-const complementaryBackgroundColor = ('#FFFFFF', '#B5D0FC')
-const transparentTabColours = ('#FFFFFF', '#E6EFFE')
-const opaqueTabColors = ('#00B7F0')
-
-
 
 function Assessment() {
     const sizeOfItems = 6
@@ -133,30 +147,32 @@ function GridOfTabs(props)
     const [page, setPage] = React.useState(0);
     const changePage = (change, newPage) => setPage(newPage);
     return (
-        <Grid container padding={paddingDefault} sx={{justifyContent:"center", alignItems:"center"}}>
-            <Box sx={{width:'100%', height:"70%"}}>
-                <Box sx={{width:'100%', height:'10%', backgroundColor:transparentTabColours, justifyContent:"center", alignItems:"center"}}>
-                    <Tabs value={page} onChange={changePage}>
-                        {props.tabNames.map((tabName, index) => (
-                            <Tab key={index} label={tabName}/>
-                        ))}
-                    </Tabs>
+        <ThemeProvider theme={theme}>
+            <Grid container padding={paddingDefault} sx={{justifyContent:"center", alignItems:"center"}}>
+                <Box sx={{width:'100%', height:"70%"}}>
+                    <Box sx={{width:'100%', height:'10%', backgroundColor:`${'secondary'}.main`, justifyContent:"center", alignItems:"center"}}>
+                        <Tabs color='black' indicatorColor='primary' textColor='black' value={page} onChange={changePage}>
+                            {props.tabNames.map((tabName, index) => (
+                                <Tab key={index} label={tabName}/>
+                            ))}
+                        </Tabs>
+                    </Box>
+                    
+
+                    <div hidden={page != 0}>
+                        <Assessment/>
+                    </div>
+
+                    <div hidden={page != 1}>
+                        <Work/>
+                    </div>
+
+                    <div hidden={page != 2}>
+                        <Progress/>
+                    </div>
                 </Box>
-                
-
-                <div hidden={page != 0}>
-                    <Assessment/>
-                </div>
-
-                <div hidden={page != 1}>
-                    <Work/>
-                </div>
-
-                <div hidden={page != 2}>
-                    <Progress/>
-                </div>
-            </Box>
-        </Grid>
+            </Grid>
+        </ThemeProvider>
     )
 }
 
@@ -212,35 +228,37 @@ function PageTemplate() {
     const changePage = (change, newPage) => setPage(newPage);
     const tabName = ['Assessment', 'Work', 'Progress'];
     return (
-        <Container maxWidth='xl'>
-            <Box backgroundColor={backgroundColor}>
-                <Grid container padding={paddingDefault} sx={{justifyContent:"center", alignItems:"center"}}>
-                    <Box sx={{width:'85%', height:"70%"}}>
-                        <Box sx={{width:'100%', height:'10%', backgroundColor:transparentTabColours, justifyContent:"center", alignItems:"center"}}>
-                            <Tabs value={page} onChange={changePage}>
-                                <Tab label="Methodology"/>
-                                <Tab label="Teachers"/>
-                            </Tabs>
-                        </Box>
+        <ThemeProvider theme={theme}>
+            <Container maxWidth='xl'>
+                <Box sx={{bgcolor:`${'primary'}.main`}}>
+                    <Grid container padding={paddingDefault} sx={{justifyContent:"center", alignItems:"center"}}>
+                        <Box sx={{width:'85%', height:"70%"}}>
+                            <Box sx={{width:'100%', height:'10%', backgroundColor:`${'primary'}.main`, justifyContent:"center", alignItems:"center"}}>
+                                <Tabs color='black' indicatorColor='secondary' textColor='black' value={page} onChange={changePage}>
+                                    <Tab label="Methodology"/>
+                                    <Tab label="Teachers"/>
+                                </Tabs>
+                            </Box>
 
-                        
-                        <div hidden={page !== 0}>
-                            {page === 0 &&
-                                <Stack>
-                                    <Description/>
-                                    <MethodogicalDescription tabNames={tabName}/>
-                                </Stack>
-                            }
-                        </div>
-                        <div hidden={page !== 1}>
-                            {page === 1 && 
-                                <Teachers/>
-                            }
-                        </div>
-                    </Box>
-                </Grid>
-            </Box>
-        </Container>
+                            
+                            <div hidden={page !== 0}>
+                                {page === 0 &&
+                                    <Stack>
+                                        <Description/>
+                                        <MethodogicalDescription tabNames={tabName}/>
+                                    </Stack>
+                                }
+                            </div>
+                            <div hidden={page !== 1}>
+                                {page === 1 && 
+                                    <Teachers/>
+                                }
+                            </div>
+                        </Box>
+                    </Grid>
+                </Box>
+            </Container>
+        </ThemeProvider>
     )
 }
 

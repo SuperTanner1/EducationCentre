@@ -32,7 +32,7 @@ const theme = createTheme({
     }
 });
 */
-
+/*
 const theme = createTheme({
     typography: {
         h1: {
@@ -48,6 +48,26 @@ const theme = createTheme({
         },
         secondary: {
             main:('#FFFFFF', '#0C74B8')
+        }
+    }
+});
+*/
+
+const theme = createTheme({
+    typography: {
+        h1: {
+            fontSize: 48,
+        },
+        h2: {
+            fontSize: 35, 
+        }
+    },
+    palette: {
+        primary: {
+            main:('#FFFFFF', '#E6EFFE')
+        },
+        secondary: {
+            main:('#FFFFFF', '#B5D0FC')
         }
     }
 });

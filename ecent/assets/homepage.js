@@ -19,6 +19,7 @@ import { Class } from '@mui/icons-material';
 import {ContactUs} from "./shared.js";
 import {Navigation} from "./shared.js";
 
+/*
 const theme = createTheme({
     typography: {
         h1: {
@@ -34,6 +35,46 @@ const theme = createTheme({
         },
         secondary: {
             main:('#FFFFFF', '#0C74B8')
+        }
+    }
+});
+*/
+/*
+const theme = createTheme({
+    typography: {
+        h1: {
+            fontSize: 48,
+        },
+        h2: {
+            fontSize: 35, 
+        }
+    },
+    palette: {
+        primary: {
+            main:('#FFFFFF', '#4695EC')
+        },
+        secondary: {
+            main:('#FFFFFF', '#0C74B8')
+        }
+    }
+});
+*/
+
+const theme = createTheme({
+    typography: {
+        h1: {
+            fontSize: 48,
+        },
+        h2: {
+            fontSize: 35, 
+        }
+    },
+    palette: {
+        primary: {
+            main:('#FFFFFF', '#E6EFFE')
+        },
+        secondary: {
+            main:('#FFFFFF', '#B5D0FC')
         }
     }
 });
@@ -74,7 +115,7 @@ function Introduction() {
                                     </Stack>
                                     
                                         <Typography variant="h1">Bespoke teaching for your child</Typography>
-                                        <Typography variant="h2" color='white'>A proven track record of results</Typography>
+                                        <Typography variant="h2" color='secondary'>A proven track record of results</Typography>
                                     
                                 </Stack>
 
@@ -95,7 +136,7 @@ function KeyFacts() {
     return (
         <ThemeProvider theme={theme}>
             <Container maxWidth="xl">
-                <Box sx={{backgroundColor:`${'primary'}.main`, height:800}}>
+                <Box sx={{backgroundColor:`${'primary'}.main`,opacity:0.8, height:800}}>
                     <Grid container sx={{justifyContent:"center", alignItems:"flex-start", height:1, maxWidth:"xl"}}>
                         <Grid item xs={7} sm={7} md={7} lg={7} xl={7} sx={{spacing:5}}>
                             <Stack spacing={5} sx={{justifyContent:"center", alignItems:"center", paddingTop:"5%", height:1}}>
@@ -278,11 +319,11 @@ function ClassOptions() {
     return (
         <ThemeProvider theme={theme}>
             <Container maxWidth="xl" sx={{justifyContent:"center", alignItems:"center",}}>
-                <Box sx={{backgroundColor:`${'primary'}.main`, height:850}}>
+                <Box sx={{backgroundColor:`${'primary'}.main`,opacity:0.8, height:850}}>
 
                     <Box padding={5}>
                         <Grid container sx={{justifyContent:"center", alignItems:"center",}}>
-                            <Tabs value={classType} onChange={changeClass}>
+                            <Tabs color='black' indicatorColor='secondary' textColor='black' value={classType} onChange={changeClass}>
                                 <Tab label="Secondary"/>
                                 <Tab label="Primary"/>
                                 <Tab label="1-to-1"/>
@@ -366,14 +407,14 @@ function Testimonials() {
     return (
         <ThemeProvider theme={theme}>
             <Container maxWidth="xl" height={850}>
-                <Box sx={{width:'100%', height:'85%', backgroundColor:`${'primary'}.main`}}>
+                <Box sx={{width:'100%', height:'85%', opacity:0.8, bgcolor:`${'primary'}.main`}}>
                     <Grid container padding={paddingDefault} sx={{justifyContent:"center", alignItems:"flex-start"}}>
                         <Typography variant="h2">Testimonials</Typography>
                     </Grid>
                     <Grid container padding={paddingDefault} sx={{justifyContent:"center", alignItems:"center"}}>
-                        <Box sx={{width:'85%', height:"70%"}}>
-                            <Box sx={{width:'100%', height:'10%', backgroundColor:`${'secondary'}.main`, justifyContent:"center", alignItems:"center"}}>
-                                <Tabs value={page} onChange={changePage}>
+                        <Box sx={{bgcolor:`${'primary'}.main`, width:'85%', height:"70%"}}>
+                            <Box sx={{bgcolor:`${'secondary'}.main`, width:'100%', height:'10%', justifyContent:"center", alignItems:"center"}}>
+                                <Tabs color='black' indicatorColor='secondary' textColor='black' value={page} onChange={changePage}>
                                     <Tab label="Page 1"/>
                                     <Tab label="Page 2"/>
                                     <Tab label="Page 3"/>
